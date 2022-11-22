@@ -86,6 +86,10 @@ class PatientAuxRelatePatientCreate(models.TransientModel):
 
                             vals['gender'] = patient_aux.gender
 
+                        if (patient_aux.estimated_age is not False):
+
+                            vals['estimated_age'] = patient_aux.estimated_age
+
                         if (patient_aux.birthday is not False):
 
                             vals['birthday'] = patient_aux.birthday
