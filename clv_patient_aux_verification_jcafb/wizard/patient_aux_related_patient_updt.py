@@ -106,6 +106,10 @@ class PatientAuxRelatePatientUpdt(models.TransientModel):
 
                     vals['gender'] = patient_aux.gender
 
+                if (patient_aux.estimated_age != related_patient.estimated_age):
+
+                    vals['estimated_age'] = patient_aux.estimated_age
+
                 if (patient_aux.birthday != related_patient.birthday):
 
                     vals['birthday'] = patient_aux.birthday
