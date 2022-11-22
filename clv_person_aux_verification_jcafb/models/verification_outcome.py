@@ -318,6 +318,11 @@ class VerificationOutcome(models.Model):
                     outcome_info += _('"Gender" has changed.\n')
                     state = self._get_verification_outcome_state(state, 'Warning (L1)')
 
+                if (model_object.estimated_age != related_person.estimated_age):
+
+                    outcome_info += _('"Estimatade Age" has changed.\n')
+                    state = self._get_verification_outcome_state(state, 'Warning (L1)')
+
                 if (model_object.birthday != related_person.birthday):
 
                     outcome_info += _('"Date of Birth" has changed.\n')
