@@ -108,6 +108,10 @@ class PersonAuxRelatePersonCreate(models.TransientModel):
 
                             vals['gender'] = person_aux.gender
 
+                        if (person_aux.estimated_age is not False):
+
+                            vals['estimated_age'] = person_aux.estimated_age
+
                         if (person_aux.birthday is not False):
 
                             vals['birthday'] = person_aux.birthday
