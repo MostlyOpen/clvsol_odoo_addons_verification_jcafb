@@ -119,6 +119,10 @@ class PersonAuxRelatePersonUpdt(models.TransientModel):
 
                     vals['gender'] = person_aux.gender
 
+                if (person_aux.estimated_age != related_person.estimated_age):
+
+                    vals['estimated_age'] = person_aux.estimated_age
+
                 if (person_aux.birthday != related_person.birthday):
 
                     vals['birthday'] = person_aux.birthday
