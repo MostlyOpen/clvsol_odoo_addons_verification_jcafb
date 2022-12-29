@@ -346,8 +346,10 @@ class VerificationOutcome(models.Model):
 
                 if residence.state != model_object.state:
 
-                    outcome_info += _('Residence "State" mismatch.\n')
-                    state = self._get_verification_outcome_state(state, 'Warning (L1)')
+                    if not ((residence.state == 'selected') and (model_object.state == 'waiting')):
+
+                        outcome_info += _('Residence "State" mismatch.\n')
+                        state = self._get_verification_outcome_state(state, 'Warning (L1)')
 
                 if residence.employee_id.id != model_object.employee_id.id:
 
