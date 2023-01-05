@@ -56,6 +56,45 @@ class PatientResidenceUpdt(models.TransientModel):
 
                     vals['employee_id'] = patient.employee_id.id
 
+                # if self.update_contact_info_data:
+                if True:
+
+                    # if (patient.contact_info_is_unavailable != residence.contact_info_is_unavailable):
+
+                    #     vals['contact_info_is_unavailable'] = patient.contact_info_is_unavailable
+
+                    if (patient.zip != residence.zip):
+
+                        vals['zip'] = patient.zip
+
+                    if (patient.street_name != residence.street_name):
+
+                        vals['street_name'] = patient.street_name
+
+                    if (patient.street_number != residence.street_number):
+
+                        vals['street_number'] = patient.street_number
+
+                    if (patient.street_number2 != residence.street_number2):
+
+                        vals['street_number2'] = patient.street_number2
+
+                    if (patient.street2 != residence.street2):
+
+                        vals['street2'] = patient.street2
+
+                    if (patient.country_id != residence.country_id):
+
+                        vals['country_id'] = patient.country_id.id
+
+                    if (patient.state_id != residence.state_id):
+
+                        vals['state_id'] = patient.state_id.id
+
+                    if (patient.city_id != residence.city_id):
+
+                        vals['city_id'] = patient.city_id.id
+
                 if vals != {}:
 
                     vals['reg_state'] = 'revised'
