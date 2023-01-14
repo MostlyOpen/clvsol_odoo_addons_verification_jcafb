@@ -217,12 +217,27 @@ class VerificationOutcome(models.Model):
                     outcome_info += _('Please, verify "Contact Information (Street)" data.\n')
                     state = self._get_verification_outcome_state(state, 'Warning (L0)')
 
-                contact_information_patern = PartnerEntityContactInformationPattern.search([
-                    ('street', '=', model_object.street_name),
-                    ('street_number', '=', model_object.street_number),
-                    ('street_number2', '=', model_object.street_number2),
-                    ('street2', '=', model_object.street2),
-                ])
+                # contact_information_patern = PartnerEntityContactInformationPattern.search([
+                #     ('street', '=', model_object.street_name),
+                #     ('street_number', '=', model_object.street_number),
+                #     ('street_number2', '=', model_object.street_number2),
+                #     ('street2', '=', model_object.street2),
+                # ])
+
+                if (model_object.street_number2 is False) or (model_object.street_number2 == ''):
+                    contact_information_patern = PartnerEntityContactInformationPattern.search([
+                        ('street', '=', model_object.street_name),
+                        ('street_number', '=', model_object.street_number),
+                        # ('street_number2', '=', model_object.street_number2),
+                        ('street2', '=', model_object.street2),
+                    ])
+                else:
+                    contact_information_patern = PartnerEntityContactInformationPattern.search([
+                        ('street', '=', model_object.street_name),
+                        ('street_number', '=', model_object.street_number),
+                        ('street_number2', '=', model_object.street_number2),
+                        ('street2', '=', model_object.street2),
+                    ])
 
                 if contact_information_patern.street is False:
 
