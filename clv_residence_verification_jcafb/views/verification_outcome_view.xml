@@ -10,6 +10,9 @@
         <field name="inherit_id" ref="clv_residence.clv_residence_view_form"/>
         <field name="priority" eval="8"/>
         <field name="arch" type="xml">
+            <field name="category_id" position="before">
+                <field name="validate_contact_information"/>
+            </field>
             <field name="notes" position="after">
                 <h1><label for="verification_state" string="Verification State: "/>[<field name="verification_state" style="color:blue; background:White;"/>]</h1>
                 <label for="verification_marker_ids" class="oe_edit_only"/>
