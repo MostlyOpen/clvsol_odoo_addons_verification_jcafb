@@ -13,6 +13,11 @@ _logger = logging.getLogger(__name__)
 class PatientAux(models.Model):
     _inherit = 'clv.patient_aux'
 
+    validate_contact_information = fields.Boolean(
+        string='Validate Contact Information',
+        default=True
+    )
+
     verification_outcome_ids = fields.One2many(
         string='Verification Outcomes',
         comodel_name='clv.verification.outcome',
@@ -195,7 +200,8 @@ class VerificationOutcome(models.Model):
                 outcome_info += _('"Contact Information" is missing.\n')
                 state = self._get_verification_outcome_state(state, 'Error (L0)')
 
-            if model_object.reg_state not in ['verified', 'ready', 'done', 'canceled']:
+            # if model_object.reg_state not in ['verified', 'ready', 'done', 'canceled']:
+            if model_object.validate_contact_information is True:
 
                 street_patern = PartnerEntityStreetPattern.search([
                     ('street', '=', model_object.street_name),
@@ -230,6 +236,9 @@ class VerificationOutcome(models.Model):
                         ('street', '=', model_object.street_name),
                         ('street_number', '=', model_object.street_number),
                         # ('street_number2', '=', model_object.street_number2),
+                        '|',
+                        ('street_number2', '=', False),
+                        ('street_number2', '=', ''),
                         ('street2', '=', model_object.street2),
                     ])
                 else:
@@ -246,7 +255,8 @@ class VerificationOutcome(models.Model):
                         ' (' + str(model_object.address_name) + ')\n'
                     state = self._get_verification_outcome_state(state, 'Warning (L0)')
 
-        if model_object.reg_state not in ['ready', 'done', 'canceled']:
+        # if model_object.reg_state not in ['ready', 'done', 'canceled']:
+        if model_object.reg_state not in ['canceled']:
 
             if model_object.gender is False:
 
