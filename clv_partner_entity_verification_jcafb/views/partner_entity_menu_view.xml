@@ -15,6 +15,12 @@
         sequence="10"
         action="clv_partner_entity_street_pattern_action"/>
 
+    <menuitem name="Street Pattern Matches" id="clv_base.partner_entity_street_pattern_matches" 
+        parent="clv_base.partner_entity"
+        groups="clv_base.group_user"
+        sequence="12"
+        action="clv_partner_entity_street_pattern_match_action"/>
+
     <menuitem name="Contact Information Patterns" id="clv_base.partner_entity_contact_information_patterns" 
         parent="clv_base.partner_entity"
         groups="clv_base.group_user"

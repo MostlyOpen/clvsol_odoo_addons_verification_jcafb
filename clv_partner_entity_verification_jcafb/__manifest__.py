@@ -5,7 +5,7 @@
 {
     'name': 'Partner Entity Verification (for CLVhealth-JCAFB Solution)',
     'summary': 'Partner Entity Verification Module for CLVhealth-JCAFB Solution.',
-    'version': '15.0.6.0',
+    'version': '15.0.6.1',
     'author': 'Carlos Eduardo Vercelino - CLVsol',
     'category': 'CLVsol Solutions',
     'license': 'AGPL-3',
@@ -16,7 +16,9 @@
     'data': [
         'security/ir.model.access.csv',
         'views/partner_entity_street_pattern_view.xml',
+        'views/partner_entity_street_pattern_match_view.xml',
         'views/partner_entity_contact_information_pattern_view.xml',
+        'views/referenceable_model_view.xml',
         'views/partner_entity_menu_view.xml',
     ],
     'demo': [],

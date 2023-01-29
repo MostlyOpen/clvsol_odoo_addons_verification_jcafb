@@ -4,3 +4,5 @@
 
 from . import partner_entity_street_pattern
 from . import partner_entity_contact_information_pattern
+from . import partner_entity_street_pattern_match
+from . import referenceable_model
