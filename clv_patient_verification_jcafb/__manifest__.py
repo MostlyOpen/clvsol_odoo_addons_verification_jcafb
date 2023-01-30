@@ -5,7 +5,7 @@
 {
     'name': 'Patient Verification (for CLVhealth-JCAFB Solution)',
     'summary': 'Patient Verification Module used in CLVhealth-JCAFB Solution.',
-    'version': '15.0.6.0',
+    'version': '15.0.6.1',
     'author': 'Carlos Eduardo Vercelino - CLVsol',
     'category': 'CLVsol Solutions',
     'license': 'AGPL-3',
@@ -16,6 +16,7 @@
     ],
     'data': [
         'security/ir.model.access.csv',
+        'data/street_pattern_match.xml',
         'data/patient_verification.xml',
         'views/verification_outcome_view.xml',
         'wizard/patient_mass_edit_view.xml',
