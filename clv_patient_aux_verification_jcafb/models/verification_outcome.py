@@ -176,7 +176,13 @@ class VerificationOutcome(models.Model):
         date_verification = datetime.now()
 
         PartnerEntityStreetPattern = self.env['clv.partner_entity.street_pattern']
+        PartnerEntityStreetPatternMatch = self.env['clv.partner_entity.street_pattern.match']
         PartnerEntityContactInformationPattern = self.env['clv.partner_entity.contact_information_pattern']
+
+        ref_id = model_object._name + ',' + str(model_object.id)
+        PartnerEntityStreetPatternMatch.search([
+            ('ref_id', '=', ref_id),
+        ]).unlink()
 
         state = 'Ok'
         outcome_info = ''
@@ -213,6 +219,14 @@ class VerificationOutcome(models.Model):
                     outcome_info += _('"Street Pattern" was not recognised.') + \
                         ' (' + str(model_object.street_name) + ' [' + str(model_object.street2) + '])\n'
                     state = self._get_verification_outcome_state(state, 'Warning (L0)')
+
+                else:
+
+                    values = {
+                        'street_pattern_id': street_patern.id,
+                        'ref_id': ref_id,
+                    }
+                    PartnerEntityStreetPatternMatch.create(values)
 
                 if (model_object.zip is False) or \
                    (model_object.street_name is False) or \
