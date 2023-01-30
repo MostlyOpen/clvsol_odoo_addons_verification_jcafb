@@ -5,7 +5,7 @@
 {
     'name': 'Patient (Aux) Verification (for CLVhealth-JCAFB Solution)',
     'summary': 'Patient (Aux) Verification Module used in CLVhealth-JCAFB Solution.',
-    'version': '15.0.6.0',
+    'version': '15.0.6.1',
     'author': 'Carlos Eduardo Vercelino - CLVsol',
     'category': 'CLVsol Solutions',
     'license': 'AGPL-3',
@@ -18,6 +18,7 @@
         'security/ir.model.access.csv',
         'data/patient_aux_verification.xml',
         'data/default_value.xml',
+        'data/street_pattern_match.xml',
         'views/verification_outcome_view.xml',
         'wizard/patient_aux_mass_edit_view.xml',
         'wizard/patient_aux_verification_exec_view.xml',
