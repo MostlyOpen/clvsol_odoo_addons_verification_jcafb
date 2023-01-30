@@ -30,7 +30,7 @@ class PartnerEntityStreetPattern(models.Model):
     count_street_pattern_matches = fields.Integer(
         string='Number of Matches',
         compute='_compute_count_street_pattern_matches',
-        store=False
+        store=True,
     )
 
     @api.depends('street_pattern_match_ids')

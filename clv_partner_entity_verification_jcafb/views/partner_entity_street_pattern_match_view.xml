@@ -119,5 +119,20 @@
         </field>
     </record>
 
+    <record id="clv_partner_entity_street_pattern_view_search_street_pattern_match" model="ir.ui.view">
+        <field name="name">clv.partner_entity.street_pattern.search</field>
+        <field name="model">clv.partner_entity.street_pattern</field>
+        <field name="inherit_id" ref="clv_partner_entity_street_pattern_view_search"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <field name="street2" position="after">
+                <field name="count_street_pattern_matches"/>
+            </field>
+            <group name="group_by" position="inside">
+                <filter name="group_by_count_street_pattern_matches" string="Number of Matches" context="{'group_by': 'count_street_pattern_matches'}"/>
+            </group>
+        </field>
+    </record>
+
 </odoo>
 
