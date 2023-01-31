@@ -18,6 +18,7 @@
         'security/ir.model.access.csv',
         'data/residence_verification.xml',
         'data/street_pattern_match.xml',
+        'data/contact_information_pattern_match.xml',
         'views/verification_outcome_view.xml',
         'wizard/residence_mass_edit_view.xml',
         'wizard/residence_verification_exec_view.xml',
