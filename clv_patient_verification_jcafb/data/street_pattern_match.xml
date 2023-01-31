@@ -4,7 +4,7 @@
 
 <odoo noupdate="1">
 
-    <record id="clv_referenceable_model_document" model="clv.referenceable.model">
+    <record id="clv_referenceable_model_street_pattern_match" model="clv.referenceable.model">
         <field name="base_model">clv.partner_entity.street_pattern.match</field>
         <field name="name">Patient</field>
         <field name="model">clv.patient</field>
