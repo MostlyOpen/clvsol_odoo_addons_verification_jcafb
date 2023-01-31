@@ -19,6 +19,7 @@
         'data/patient_aux_verification.xml',
         'data/default_value.xml',
         'data/street_pattern_match.xml',
+        'data/contact_information_pattern_match.xml',
         'views/verification_outcome_view.xml',
         'wizard/patient_aux_mass_edit_view.xml',
         'wizard/patient_aux_verification_exec_view.xml',
