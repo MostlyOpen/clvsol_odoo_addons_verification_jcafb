@@ -8,3 +8,8 @@ from odoo import models
 class PartnerEntityStreetPatternMatch(models.Model):
     _name = "clv.partner_entity.street_pattern.match"
     _inherit = 'clv.partner_entity.street_pattern.match', 'clv.abstract.reference'
+
+
+class PartnerEntityContactInformationPatternMatch(models.Model):
+    _name = "clv.partner_entity.contact_information_pattern.match"
+    _inherit = 'clv.partner_entity.contact_information_pattern.match', 'clv.abstract.reference'

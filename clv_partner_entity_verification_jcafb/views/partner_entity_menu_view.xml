@@ -27,4 +27,10 @@
         sequence="20"
         action="clv_partner_entity_contact_information_pattern_action"/>
 
+    <menuitem name="Contact Information Pattern Matches" id="clv_base.partner_entity_contact_information_pattern_matches" 
+        parent="clv_base.partner_entity"
+        groups="clv_base.group_user"
+        sequence="22"
+        action="clv_partner_entity_contact_information_pattern_match_action"/>
+
 </odoo>

@@ -11,19 +11,17 @@
                 <sheet>
                     <div name="button_box" class="oe_right oe_button_box">
                     </div>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="street"/>
+                            <field name="street_number"/>
+                            <field name="street_number2"/>
+                            <field name="street2"/>
+                            <field name="notes" placeholder="Notes..." colspan="4"/>
+                        </group>
+                    </group>
                     <notebook>
-                        <page string="Contact Information Pattern">
-                            <group>
-                                <group>
-                                    <field name="name"/>
-                                    <field name="street"/>
-                                    <field name="street_number"/>
-                                    <field name="street_number2"/>
-                                    <field name="street2"/>
-                                    <field name="notes" placeholder="Notes..." colspan="4"/>
-                                </group>
-                            </group>
-                        </page>
                         <page name="settings" string="Settings" groups="clv_base.group_reguser" invisible="False">
                             <group name="settings_top">
                                 <group name="settings_left">
