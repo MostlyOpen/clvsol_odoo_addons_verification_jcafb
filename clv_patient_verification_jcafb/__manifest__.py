@@ -17,6 +17,7 @@
     'data': [
         'security/ir.model.access.csv',
         'data/street_pattern_match.xml',
+        'data/contact_information_pattern_match.xml',
         'data/patient_verification.xml',
         'views/verification_outcome_view.xml',
         'wizard/patient_mass_edit_view.xml',
