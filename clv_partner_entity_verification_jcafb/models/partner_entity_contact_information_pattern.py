@@ -5,7 +5,7 @@
 from odoo import api, fields, models
 
 
-class PartnerEntityStreetPattern(models.Model):
+class PartnerEntityContactInformationPattern(models.Model):
     _description = 'Partner Entity Contact_Information Pattern'
     _name = "clv.partner_entity.contact_information_pattern"
     _order = "name"

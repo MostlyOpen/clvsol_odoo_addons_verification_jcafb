@@ -175,7 +175,19 @@ class VerificationOutcome(models.Model):
         date_verification = datetime.now()
 
         PartnerEntityStreetPattern = self.env['clv.partner_entity.street_pattern']
+        PartnerEntityStreetPatternMatch = self.env['clv.partner_entity.street_pattern.match']
         PartnerEntityContactInformationPattern = self.env['clv.partner_entity.contact_information_pattern']
+        PartnerEntityContactInformationPatternMatch = self.env['clv.partner_entity.contact_information_pattern.match']
+
+        street_ref_id = model_object._name + ',' + str(model_object.id)
+        PartnerEntityStreetPatternMatch.search([
+            ('ref_id', '=', street_ref_id),
+        ]).unlink()
+
+        contact_information_ref_id = model_object._name + ',' + str(model_object.id)
+        PartnerEntityContactInformationPatternMatch.search([
+            ('ref_id', '=', contact_information_ref_id),
+        ]).unlink()
 
         state = 'Ok'
         outcome_info = ''
@@ -215,6 +227,14 @@ class VerificationOutcome(models.Model):
                     outcome_info += _('"Street Pattern" was not recognised.') + \
                         ' (' + str(model_object.street_name) + ' [' + str(model_object.street2) + '])\n'
                     state = self._get_verification_outcome_state(state, 'Warning (L0)')
+
+                else:
+
+                    values = {
+                        'street_pattern_id': street_patern.id,
+                        'ref_id': street_ref_id,
+                    }
+                    PartnerEntityStreetPatternMatch.create(values)
 
                 if (model_object.zip is False) or \
                    (model_object.street_name is False) or \
@@ -268,6 +288,14 @@ class VerificationOutcome(models.Model):
                     outcome_info += _('"Contact Information Pattern" was not recognised.') + \
                         ' (' + str(model_object.address_name) + ')\n'
                     state = self._get_verification_outcome_state(state, 'Warning (L0)')
+
+                else:
+
+                    values = {
+                        'contact_information_pattern_id': contact_information_patern.id,
+                        'ref_id': contact_information_ref_id,
+                    }
+                    PartnerEntityContactInformationPatternMatch.create(values)
 
         # if model_object.reg_state not in ['ready', 'done', 'canceled']:
         if model_object.reg_state not in ['canceled']:

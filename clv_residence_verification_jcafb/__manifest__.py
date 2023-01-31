@@ -5,7 +5,7 @@
 {
     'name': 'Residence Verification (for CLVhealth-JCAFB Solution)',
     'summary': 'Residence Verification Module used in CLVhealth-JCAFB Solution.',
-    'version': '15.0.6.0',
+    'version': '15.0.6.1',
     'author': 'Carlos Eduardo Vercelino - CLVsol',
     'category': 'CLVsol Solutions',
     'license': 'AGPL-3',
@@ -17,6 +17,8 @@
     'data': [
         'security/ir.model.access.csv',
         'data/residence_verification.xml',
+        'data/street_pattern_match.xml',
+        'data/contact_information_pattern_match.xml',
         'views/verification_outcome_view.xml',
         'wizard/residence_mass_edit_view.xml',
         'wizard/residence_verification_exec_view.xml',
