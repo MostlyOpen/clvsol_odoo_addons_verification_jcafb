@@ -177,10 +177,16 @@ class VerificationOutcome(models.Model):
         PartnerEntityStreetPattern = self.env['clv.partner_entity.street_pattern']
         PartnerEntityStreetPatternMatch = self.env['clv.partner_entity.street_pattern.match']
         PartnerEntityContactInformationPattern = self.env['clv.partner_entity.contact_information_pattern']
+        PartnerEntityContactInformationPatternMatch = self.env['clv.partner_entity.contact_information_pattern.match']
 
-        ref_id = model_object._name + ',' + str(model_object.id)
+        street_ref_id = model_object._name + ',' + str(model_object.id)
         PartnerEntityStreetPatternMatch.search([
-            ('ref_id', '=', ref_id),
+            ('ref_id', '=', street_ref_id),
+        ]).unlink()
+
+        contact_information_ref_id = model_object._name + ',' + str(model_object.id)
+        PartnerEntityContactInformationPatternMatch.search([
+            ('ref_id', '=', contact_information_ref_id),
         ]).unlink()
 
         state = 'Ok'
@@ -223,7 +229,7 @@ class VerificationOutcome(models.Model):
 
                     values = {
                         'street_pattern_id': street_patern.id,
-                        'ref_id': ref_id,
+                        'ref_id': street_ref_id,
                     }
                     PartnerEntityStreetPatternMatch.create(values)
 
@@ -267,6 +273,14 @@ class VerificationOutcome(models.Model):
                     outcome_info += _('"Contact Information Pattern" was not recognised.') + \
                         ' (' + str(model_object.suggested_name) + ')\n'
                     state = self._get_verification_outcome_state(state, 'Warning (L0)')
+
+                else:
+
+                    values = {
+                        'contact_information_pattern_id': contact_information_patern.id,
+                        'ref_id': contact_information_ref_id,
+                    }
+                    PartnerEntityContactInformationPatternMatch.create(values)
 
         if outcome_info == '':
             outcome_info = False
