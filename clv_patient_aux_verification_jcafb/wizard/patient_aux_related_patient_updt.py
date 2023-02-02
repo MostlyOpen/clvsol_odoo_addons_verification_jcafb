@@ -128,6 +128,10 @@ class PatientAuxRelatePatientUpdt(models.TransientModel):
 
                         vals['contact_info_is_unavailable'] = patient_aux.contact_info_is_unavailable
 
+                    if (patient_aux.validate_contact_information != related_patient.validate_contact_information):
+
+                        vals['validate_contact_information'] = patient_aux.validate_contact_information
+
                     if (patient_aux.zip != related_patient.zip):
 
                         vals['zip'] = patient_aux.zip
