@@ -96,11 +96,15 @@ class PatientAuxReload(models.TransientModel):
 
                     if (patient_aux.contact_info_is_unavailable != related_patient.contact_info_is_unavailable):
 
-                        vals['contact_info_is_unavailable'] = patient_aux.contact_info_is_unavailable
+                        vals['contact_info_is_unavailable'] = related_patient.contact_info_is_unavailable
+
+                    if (patient_aux.validate_contact_information != related_patient.validate_contact_information):
+
+                        vals['validate_contact_information'] = related_patient.validate_contact_information
 
                     if (patient_aux.zip != related_patient.zip):
 
-                        vals['zip'] = patient_aux.zip
+                        vals['zip'] = related_patient.zip
 
                     if (patient_aux.street_name != related_patient.street_name):
 
