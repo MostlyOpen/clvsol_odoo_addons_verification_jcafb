@@ -244,7 +244,7 @@ class VerificationOutcome(models.Model):
                     outcome_info += _('Please, verify "Contact Information (Street)" data.\n')
                     state = self._get_verification_outcome_state(state, 'Warning (L0)')
 
-                # contact_information_patern = PartnerEntityContactInformationPattern.search([
+                # contact_information_pattern = PartnerEntityContactInformationPattern.search([
                 #     ('street', '=', model_object.street_name),
                 #     ('street_number', '=', model_object.street_number),
                 #     ('street_number2', '=', model_object.street_number2),
@@ -252,7 +252,7 @@ class VerificationOutcome(models.Model):
                 # ])
 
                 if (model_object.street_number2 is False) or (model_object.street_number2 == ''):
-                    contact_information_patern = PartnerEntityContactInformationPattern.search([
+                    contact_information_pattern = PartnerEntityContactInformationPattern.search([
                         ('street', '=', model_object.street_name),
                         ('street_number', '=', model_object.street_number),
                         # ('street_number2', '=', model_object.street_number2),
@@ -262,14 +262,14 @@ class VerificationOutcome(models.Model):
                         ('street2', '=', model_object.street2),
                     ])
                 else:
-                    contact_information_patern = PartnerEntityContactInformationPattern.search([
+                    contact_information_pattern = PartnerEntityContactInformationPattern.search([
                         ('street', '=', model_object.street_name),
                         ('street_number', '=', model_object.street_number),
                         ('street_number2', '=', model_object.street_number2),
                         ('street2', '=', model_object.street2),
                     ])
 
-                if contact_information_patern.street is False:
+                if contact_information_pattern.street is False:
 
                     outcome_info += _('"Contact Information Pattern" was not recognised.') + \
                         ' (' + str(model_object.address_name) + ')\n'
@@ -278,7 +278,7 @@ class VerificationOutcome(models.Model):
                 else:
 
                     values = {
-                        'contact_information_pattern_id': contact_information_patern.id,
+                        'contact_information_pattern_id': contact_information_pattern.id,
                         'ref_id': contact_information_ref_id,
                     }
                     PartnerEntityContactInformationPatternMatch.create(values)
@@ -391,6 +391,12 @@ class VerificationOutcome(models.Model):
                    (model_object.country_id != related_patient.country_id) or \
                    (model_object.state_id != related_patient.state_id) or \
                    (model_object.city_id != related_patient.city_id):
+
+                    outcome_info += _('"Contact Information (Address)" has changed.\n')
+                    state = self._get_verification_outcome_state(state, 'Warning (L1)')
+
+                if (model_object.validate_contact_information != related_patient.validate_contact_information) or \
+                   (model_object.contact_info_is_unavailable != related_patient.contact_info_is_unavailable):
 
                     outcome_info += _('"Contact Information (Address)" has changed.\n')
                     state = self._get_verification_outcome_state(state, 'Warning (L1)')
