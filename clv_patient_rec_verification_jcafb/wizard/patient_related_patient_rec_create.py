@@ -93,6 +93,8 @@ class PatientRelatePatientRecCreate(models.TransientModel):
 
                             vals['force_is_deceased'] = patient.force_is_deceased
 
+                        vals['contact_info_is_unavailable'] = patient.contact_info_is_unavailable
+
                         if (patient.zip is not False):
 
                             vals['zip'] = patient.zip
@@ -132,6 +134,8 @@ class PatientRelatePatientRecCreate(models.TransientModel):
                         if (patient.mobile is not False):
 
                             vals['mobile'] = patient.mobile
+
+                        vals['validate_contact_information'] = patient.validate_contact_information
 
                         # if (patient.global_tag_ids.id is not False):
 
