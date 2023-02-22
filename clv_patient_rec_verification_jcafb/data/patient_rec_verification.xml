@@ -10,11 +10,11 @@
 		<field name="action" eval="&quot;&quot;&quot;_patient_rec_verification&quot;&quot;&quot;"/>
 	</record>
 	 
-	<record id="clv_patient_rec_patient_rec_verification_related_patient_template" model="clv.verification.template">
+	<!--record id="clv_patient_rec_patient_rec_verification_related_patient_template" model="clv.verification.template">
 		<field name="name" eval="&quot;&quot;&quot;clv.patient_rec [_patient_rec_verification_related_patient]&quot;&quot;&quot;"/>
 		<field name="model" eval="&quot;&quot;&quot;clv.patient_rec&quot;&quot;&quot;"/>
 		<field name="action" eval="&quot;&quot;&quot;_patient_rec_verification_related_patient&quot;&quot;&quot;"/>
-	</record>
+	</record-->
 	 
 	<record id="clv_patient_rec_patient_rec_verification_exec_template" model="clv.verification.template">
 		<field name="name" eval="&quot;&quot;&quot;clv.patient_rec [_patient_rec_verification_exec]&quot;&quot;&quot;"/>
