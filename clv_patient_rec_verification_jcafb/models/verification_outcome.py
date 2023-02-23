@@ -313,175 +313,175 @@ class VerificationOutcome(models.Model):
             verification_outcome, state, outcome_info, date_verification, model_object
         )
 
-    # def _patient_rec_verification_related_patient(self, verification_outcome, model_object):
+    def _patient_verification_related_patient_rec(self, verification_outcome, model_object):
 
-    #     _logger.info(u'%s %s', '>>>>>>>>>>>>>>> (model_object):', model_object.name)
+        _logger.info(u'%s %s', '>>>>>>>>>>>>>>> (model_object):', model_object.name)
 
-    #     date_verification = datetime.now()
+        date_verification = datetime.now()
 
-    #     related_patient = model_object.related_patient_id
+        related_patient_rec = model_object.related_patient_rec_id
 
-    #     state = 'Ok'
-    #     outcome_info = ''
+        state = 'Ok'
+        outcome_info = ''
 
-    #     if model_object.related_patient_is_unavailable:
+        if model_object.related_patient_rec_is_unavailable:
 
-    #         outcome_info = _('"Related Patient is Unavailable" should not be set.\n')
-    #         state = self._get_verification_outcome_state(state, 'Error (L1)')
+            outcome_info = _('"Related Patient (Rec) is Unavailable" should not be set.\n')
+            state = self._get_verification_outcome_state(state, 'Error (L1)')
 
-    #     else:
+        else:
 
-    #         if related_patient.id is not False:
+            if related_patient_rec.id is not False:
 
-    #             if (model_object.name != related_patient.name):
+                if (model_object.name != related_patient_rec.name):
 
-    #                 outcome_info += _('"Name" has changed.\n')
-    #                 state = self._get_verification_outcome_state(state, 'Warning (L1)')
+                    outcome_info += _('"Name" has changed.\n')
+                    state = self._get_verification_outcome_state(state, 'Warning (L1)')
 
-    #             if (model_object.code != related_patient.code):
+                if (model_object.code != related_patient_rec.code):
 
-    #                 outcome_info += _('"Patient Code" has changed.\n')
-    #                 state = self._get_verification_outcome_state(state, 'Warning (L1)')
+                    outcome_info += _('"Patient Code" has changed.\n')
+                    state = self._get_verification_outcome_state(state, 'Warning (L1)')
 
-    #             if (model_object.is_absent != related_patient.is_absent):
+                if (model_object.is_absent != related_patient_rec.is_absent):
 
-    #                 outcome_info += _('"Is Absent" has changed.\n')
-    #                 state = self._get_verification_outcome_state(state, 'Warning (L1)')
+                    outcome_info += _('"Is Absent" has changed.\n')
+                    state = self._get_verification_outcome_state(state, 'Warning (L1)')
 
-    #             if (model_object.gender != related_patient.gender):
+                if (model_object.gender != related_patient_rec.gender):
 
-    #                 outcome_info += _('"Gender" has changed.\n')
-    #                 state = self._get_verification_outcome_state(state, 'Warning (L1)')
+                    outcome_info += _('"Gender" has changed.\n')
+                    state = self._get_verification_outcome_state(state, 'Warning (L1)')
 
-    #             if (model_object.estimated_age != related_patient.estimated_age):
+                if (model_object.estimated_age != related_patient_rec.estimated_age):
 
-    #                 outcome_info += _('"Estimated Age" has changed.\n')
-    #                 state = self._get_verification_outcome_state(state, 'Warning (L1)')
+                    outcome_info += _('"Estimated Age" has changed.\n')
+                    state = self._get_verification_outcome_state(state, 'Warning (L1)')
 
-    #             if (model_object.birthday != related_patient.birthday):
+                if (model_object.birthday != related_patient_rec.birthday):
 
-    #                 outcome_info += _('"Date of Birth" has changed.\n')
-    #                 state = self._get_verification_outcome_state(state, 'Warning (L1)')
+                    outcome_info += _('"Date of Birth" has changed.\n')
+                    state = self._get_verification_outcome_state(state, 'Warning (L1)')
 
-    #             if (model_object.force_is_deceased != related_patient.force_is_deceased):
+                if (model_object.force_is_deceased != related_patient_rec.force_is_deceased):
 
-    #                 outcome_info += _('"Force Is Deceased" has changed.\n')
-    #                 state = self._get_verification_outcome_state(state, 'Warning (L1)')
+                    outcome_info += _('"Force Is Deceased" has changed.\n')
+                    state = self._get_verification_outcome_state(state, 'Warning (L1)')
 
-    #             if (model_object.date_death != related_patient.date_death):
+                if (model_object.date_death != related_patient_rec.date_death):
 
-    #                 outcome_info += _('"Deceased Date" has changed.\n')
-    #                 state = self._get_verification_outcome_state(state, 'Warning (L1)')
+                    outcome_info += _('"Deceased Date" has changed.\n')
+                    state = self._get_verification_outcome_state(state, 'Warning (L1)')
 
-    #             if (model_object.phase_id != related_patient.phase_id):
+                if (model_object.phase_id != related_patient_rec.phase_id):
 
-    #                 outcome_info += _('"Phase" has changed.\n')
-    #                 state = self._get_verification_outcome_state(state, 'Warning (L1)')
+                    outcome_info += _('"Phase" has changed.\n')
+                    state = self._get_verification_outcome_state(state, 'Warning (L1)')
 
-    #             if (model_object.state != related_patient.state):
+                if (model_object.state != related_patient_rec.state):
 
-    #                 outcome_info += _('"State" has changed.\n')
-    #                 state = self._get_verification_outcome_state(state, 'Warning (L1)')
+                    outcome_info += _('"State" has changed.\n')
+                    state = self._get_verification_outcome_state(state, 'Warning (L1)')
 
-    #             if (model_object.zip != related_patient.zip) or \
-    #                (model_object.street_name != related_patient.street_name) or \
-    #                (model_object.street_number != related_patient.street_number) or \
-    #                (model_object.street_number2 != related_patient.street_number2) or \
-    #                (model_object.street2 != related_patient.street2) or \
-    #                (model_object.country_id != related_patient.country_id) or \
-    #                (model_object.state_id != related_patient.state_id) or \
-    #                (model_object.city_id != related_patient.city_id):
+                if (model_object.zip != related_patient_rec.zip) or \
+                   (model_object.street_name != related_patient_rec.street_name) or \
+                   (model_object.street_number != related_patient_rec.street_number) or \
+                   (model_object.street_number2 != related_patient_rec.street_number2) or \
+                   (model_object.street2 != related_patient_rec.street2) or \
+                   (model_object.country_id != related_patient_rec.country_id) or \
+                   (model_object.state_id != related_patient_rec.state_id) or \
+                   (model_object.city_id != related_patient_rec.city_id):
 
-    #                 outcome_info += _('"Contact Information (Address)" has changed.\n')
-    #                 state = self._get_verification_outcome_state(state, 'Warning (L1)')
+                    outcome_info += _('"Contact Information (Address)" has changed.\n')
+                    state = self._get_verification_outcome_state(state, 'Warning (L1)')
 
-    #             if (model_object.validate_contact_information != related_patient.validate_contact_information) or \
-    #                (model_object.contact_info_is_unavailable != related_patient.contact_info_is_unavailable):
+                if (model_object.validate_contact_information != related_patient_rec.validate_contact_information) or \
+                   (model_object.contact_info_is_unavailable != related_patient_rec.contact_info_is_unavailable):
 
-    #                 outcome_info += _('"Contact Information (Address)" has changed.\n')
-    #                 state = self._get_verification_outcome_state(state, 'Warning (L1)')
+                    outcome_info += _('"Contact Information (Address)" has changed.\n')
+                    state = self._get_verification_outcome_state(state, 'Warning (L1)')
 
-    #             if ((model_object.phone is not False) and (model_object.phone != related_patient.phone)) or \
-    #                ((model_object.mobile is not False) and (model_object.mobile != related_patient.mobile)) or \
-    #                ((model_object.email is not False) and (model_object.email != related_patient.email)):
+                if ((model_object.phone is not False) and (model_object.phone != related_patient_rec.phone)) or \
+                   ((model_object.mobile is not False) and (model_object.mobile != related_patient_rec.mobile)) or \
+                   ((model_object.email is not False) and (model_object.email != related_patient_rec.email)):
 
-    #                 outcome_info += _('"Contact Information (Phones)" has changed.\n')
-    #                 state = self._get_verification_outcome_state(state, 'Warning (L1)')
+                    outcome_info += _('"Contact Information (Phones)" has changed.\n')
+                    state = self._get_verification_outcome_state(state, 'Warning (L1)')
 
-    #             if (model_object.global_tag_ids.id is not False):
+                # if (model_object.global_tag_ids.id is not False):
 
-    #                 related_patient_global_tag_ids = []
-    #                 for global_tag_id in related_patient.global_tag_ids:
-    #                     related_patient_global_tag_ids.append(global_tag_id.id)
+                related_patient_rec_global_tag_ids = []
+                for global_tag_id in related_patient_rec.global_tag_ids:
+                    related_patient_rec_global_tag_ids.append(global_tag_id.id)
 
-    #                 count_new_global_tag_ids = 0
-    #                 for global_tag_id in model_object.global_tag_ids:
-    #                     if global_tag_id.id not in related_patient_global_tag_ids:
-    #                         count_new_global_tag_ids += 1
+                count_new_global_tag_ids = 0
+                for global_tag_id in model_object.global_tag_ids:
+                    if global_tag_id.id not in related_patient_rec_global_tag_ids:
+                        count_new_global_tag_ids += 1
 
-    #                 if count_new_global_tag_ids > 0:
-    #                     outcome_info += _('Added "Global Tag(s)".\n')
-    #                     state = self._get_verification_outcome_state(state, 'Warning (L1)')
+                if count_new_global_tag_ids > 0:
+                    outcome_info += _('Added "Global Tag(s)".\n')
+                    state = self._get_verification_outcome_state(state, 'Warning (L1)')
 
-    #             if (model_object.category_ids.id is not False):
+                # if (model_object.category_ids.id is not False):
 
-    #                 related_patient_category_ids = []
-    #                 for category_id in related_patient.category_ids:
-    #                     related_patient_category_ids.append(category_id.id)
+                related_patient_rec_category_ids = []
+                for category_id in related_patient_rec.category_ids:
+                    related_patient_rec_category_ids.append(category_id.id)
 
-    #                 count_new_category_ids = 0
-    #                 for category_id in model_object.category_ids:
-    #                     if category_id.id not in related_patient_category_ids:
-    #                         count_new_category_ids += 1
+                count_new_category_ids = 0
+                for category_id in model_object.category_ids:
+                    if category_id.id not in related_patient_rec_category_ids:
+                        count_new_category_ids += 1
 
-    #                 if count_new_category_ids > 0:
-    #                     outcome_info += _('Added "Patient Category(ies)".\n')
-    #                     state = self._get_verification_outcome_state(state, 'Warning (L1)')
+                if count_new_category_ids > 0:
+                    outcome_info += _('Added "Patient Category(ies)".\n')
+                    state = self._get_verification_outcome_state(state, 'Warning (L1)')
 
-    #             if (related_patient.category_ids.id is not False):
+                # if (related_patient_rec.category_ids.id is not False):
 
-    #                 model_object_category_ids = []
-    #                 for category_id in model_object.category_ids:
-    #                     model_object_category_ids.append(category_id.id)
+                model_object_category_ids = []
+                for category_id in model_object.category_ids:
+                    model_object_category_ids.append(category_id.id)
 
-    #                 count_new_category_ids = 0
-    #                 for category_id in related_patient.category_ids:
-    #                     if category_id.id not in model_object_category_ids:
-    #                         count_new_category_ids += 1
+                count_new_category_ids = 0
+                for category_id in related_patient_rec.category_ids:
+                    if category_id.id not in model_object_category_ids:
+                        count_new_category_ids += 1
 
-    #                 if count_new_category_ids > 0:
-    #                     outcome_info += _('Removed "Patient Category(ies)".\n')
-    #                     state = self._get_verification_outcome_state(state, 'Warning (L1)')
+                if count_new_category_ids > 0:
+                    outcome_info += _('Removed "Patient Category(ies)".\n')
+                    state = self._get_verification_outcome_state(state, 'Warning (L1)')
 
-    #             if (model_object.marker_ids.id is not False):
+                # if (model_object.marker_ids.id is not False):
 
-    #                 related_patient_marker_ids = []
-    #                 for marker_id in related_patient.marker_ids:
-    #                     related_patient_marker_ids.append(marker_id.id)
+                related_patient_rec_marker_ids = []
+                for marker_id in related_patient_rec.marker_ids:
+                    related_patient_rec_marker_ids.append(marker_id.id)
 
-    #                 count_new_marker_ids = 0
-    #                 for marker_id in model_object.marker_ids:
-    #                     if marker_id.id not in related_patient_marker_ids:
-    #                         count_new_marker_ids += 1
+                count_new_marker_ids = 0
+                for marker_id in model_object.marker_ids:
+                    if marker_id.id not in related_patient_rec_marker_ids:
+                        count_new_marker_ids += 1
 
-    #                 if count_new_marker_ids > 0:
-    #                     outcome_info += _('Added "Patient Marker(s)".\n')
-    #                     state = self._get_verification_outcome_state(state, 'Warning (L1)')
+                if count_new_marker_ids > 0:
+                    outcome_info += _('Added "Patient Marker(s)".\n')
+                    state = self._get_verification_outcome_state(state, 'Warning (L1)')
 
-    #             if model_object.related_patient_id.verification_state != 'Ok':
+                if model_object.related_patient_rec_id.verification_state != 'Ok':
 
-    #                 outcome_info += _('Related Patient "Verification State" is "') + \
-    #                     model_object.related_patient_id.verification_state + '".\n'
-    #                 state = self._get_verification_outcome_state(state, 'Warning (L1)')
+                    outcome_info += _('Related Patient (Rec) "Verification State" is "') + \
+                        model_object.related_patient_rec_id.verification_state + '".\n'
+                    state = self._get_verification_outcome_state(state, 'Warning (L1)')
 
-    #         else:
+            else:
 
-    #             outcome_info = _('Missing "Related Patient".\n')
-    #             state = self._get_verification_outcome_state(state, 'Error (L1)')
+                outcome_info = _('Missing "Related Patient (Rec)".\n')
+                state = self._get_verification_outcome_state(state, 'Error (L1)')
 
-    #     if outcome_info == '':
-    #         outcome_info = False
+        if outcome_info == '':
+            outcome_info = False
 
-    #     self._object_verification_outcome_updt(
-    #         verification_outcome, state, outcome_info, date_verification, model_object
-    #     )
+        self._object_verification_outcome_updt(
+            verification_outcome, state, outcome_info, date_verification, model_object
+        )
