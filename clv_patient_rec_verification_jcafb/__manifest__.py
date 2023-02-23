@@ -26,7 +26,7 @@
         'wizard/patient_rec_verification_exec_view.xml',
         'wizard/patient_related_patient_rec_updt_view.xml',
         'wizard/patient_related_patient_rec_create_view.xml',
-        'wizard/patient_rec_reload_view.xml',
+        'wizard/patient_reload_view.xml',
         'wizard/patient_rec_street_pattern_add_view.xml',
         'wizard/patient_rec_contact_information_pattern_add_view.xml',
     ],
