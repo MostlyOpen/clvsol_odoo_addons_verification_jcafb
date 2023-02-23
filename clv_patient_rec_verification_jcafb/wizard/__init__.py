@@ -4,7 +4,7 @@
 
 from . import patient_rec_mass_edit
 from . import patient_rec_verification_exec
-from . import patient_rec_related_patient_updt
+from . import patient_related_patient_rec_updt
 from . import patient_related_patient_rec_create
 from . import patient_rec_reload
 from . import patient_rec_street_pattern_add
