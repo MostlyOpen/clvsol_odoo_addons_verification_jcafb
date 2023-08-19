@@ -84,6 +84,10 @@ class PatientAuxReload(models.TransientModel):
 
                     vals['birthday'] = related_patient.birthday
 
+                if (patient_aux.estimated_age != related_patient.estimated_age):
+
+                    vals['estimated_age'] = related_patient.estimated_age
+
                 if (patient_aux.date_death != related_patient.date_death):
 
                     vals['date_death'] = related_patient.date_death
