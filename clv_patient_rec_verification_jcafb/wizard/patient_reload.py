@@ -45,7 +45,7 @@ class PatientReload(models.TransientModel):
                 related_patient_rec = patient.related_patient_rec_id
                 vals = {}
 
-                if (patient.phase_id != related_patient_rec.phase_id):
+                if (patient.phase_id.id != related_patient_rec.phase_id.id):
 
                     vals['phase_id'] = related_patient_rec.phase_id.id
 

@@ -5,7 +5,7 @@
 {
     'name': 'Patient (Rec) Verification (for CLVhealth-JCAFB Solution)',
     'summary': 'Patient (Rec) Verification Module used in CLVhealth-JCAFB Solution.',
-    'version': '15.0.6.1',
+    'version': '15.0.6.2',
     'author': 'Carlos Eduardo Vercelino - CLVsol',
     'category': 'CLVsol Solutions',
     'license': 'AGPL-3',
